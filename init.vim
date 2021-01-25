@@ -52,6 +52,9 @@ Plug 'morhetz/gruvbox'
 Plug 'dracula/vim', {'as':'dracula'}
 Plug 'arcticicestudio/nord-vim'
 Plug 'patstockwell/vim-monokai-tasty'
+Plug 'ayu-theme/ayu-vim'
+Plug 'sts10/vim-pink-moon'
+Plug 'joshdick/onedark.vim'
 
 " Autoformat
 " Plug 'Chiel92/vim-autoformat'
@@ -78,9 +81,6 @@ Plug 'junegunn/fzf.vim'
 
 " Pending tasks list
 Plug 'fisadev/FixedTaskList.vim'
-
-" Automatically close parenthesis, etc
-Plug 'Townk/vim-autoclose'
 
 " Surround
 Plug 'tpope/vim-surround'
@@ -127,6 +127,9 @@ Plug 'ryanoasis/vim-devicons'
 " Coc
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+" Indent guides
+Plug 'Yggdroot/indentLine'
+
 " Tell vim-plug we finished declaring plugins, so it can load them
 call plug#end()
 
@@ -145,6 +148,8 @@ set expandtab
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
+set listchars=tab:\|\
+set list
 
 " show line numbers
 set nu
@@ -152,6 +157,7 @@ set nu
 " remove ugly vertical lines on window division
 set fillchars+=vert:\ 
 
+let ayucolor="mirage"
 colorscheme gruvbox-material
 set termguicolors
 set linebreak
@@ -500,7 +506,6 @@ endif
 
 :set shell=/usr/bin/zsh
 
+"Indent Guides -----
+let g:indentLine_setColors = 0
 
-
-"let g:ale_linters = {'python': ['flake8', 'pylint']}
-"let g:ale_fixers = {'python': ['autopep8']}
