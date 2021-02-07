@@ -1,7 +1,5 @@
 " To use fancy symbols wherever possible, change this setting from 0 to 1
 " and use a font from https://github.com/ryanoasis/nerd-fonts in your terminal 
-" (if you aren't using one of those fonts, you will see funny characters here. 
-" Turst me, they look nice when using one of those fonts).
 let fancy_symbols_enabled = 1
 
 
@@ -26,21 +24,17 @@ if vim_plug_just_installed
     :execute 'source '.fnameescape(vim_plug_path)
 endif
 
-" Obscure hacks done, you can now modify the rest of the config down below 
-" as you wish :)
-" IMPORTANT: some things in the config are vim or neovim specific. It's easy 
-" to spot, they are inside `if using_vim` or `if using_neovim` blocks.
 
+set nocompatible
 " ============================================================================
 " Active plugins
 " You can disable or add new ones here:
 
-" this needs to be here, so vim-plug knows we are declaring the plugins we
-" want to use
 call plug#begin("~/.config/nvim/plugged")
 
 " Now the actual plugins:
-" Numbers
+
+"Numbers
 Plug 'myusuf3/numbers.vim'
 
 " Vim + Latex
@@ -55,6 +49,7 @@ Plug 'patstockwell/vim-monokai-tasty'
 Plug 'ayu-theme/ayu-vim'
 Plug 'sts10/vim-pink-moon'
 Plug 'joshdick/onedark.vim'
+Plug 'haishanh/night-owl.vim'
 
 " Autoformat
 " Plug 'Chiel92/vim-autoformat'
@@ -84,6 +79,11 @@ Plug 'fisadev/FixedTaskList.vim'
 
 " Surround
 Plug 'tpope/vim-surround'
+
+" Auto-close
+" Plug 'Townk/vim-autoclose'
+Plug 'jiangmiao/auto-pairs'
+
 
 " Syntax highlighting
 Plug 'sheerun/vim-polyglot'
@@ -130,6 +130,10 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Indent guides
 Plug 'Yggdroot/indentLine'
 
+" Snippets
+
+Plug 'honza/vim-snippets'
+
 " Tell vim-plug we finished declaring plugins, so it can load them
 call plug#end()
 
@@ -158,8 +162,8 @@ set nu
 set fillchars+=vert:\ 
 
 let ayucolor="mirage"
-colorscheme gruvbox-material
 set termguicolors
+colorscheme night-owl
 set linebreak
 
 " needed so deoplete can auto select the first suggestion
@@ -309,7 +313,7 @@ let g:yankring_clipboard_monitor = 0
 " Airline ------------------------------
 
 let g:airline_powerline_fonts = 0
-let g:airline_theme = 'gruvbox_material'
+let g:airline_theme = 'night_owl'
 let g:airline#extensions#whitespace#enabled = 0
 
 " Coc ---------------------------------
@@ -507,5 +511,8 @@ endif
 :set shell=/usr/bin/zsh
 
 "Indent Guides -----
-let g:indentLine_setColors = 0
+let g:indentLine_setColors = 1
+
+"CoC Snippets -------
+imap <C-l> <Plug>(coc-snippets-expand)
 
