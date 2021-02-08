@@ -163,7 +163,7 @@ set fillchars+=vert:\
 
 let ayucolor="mirage"
 set termguicolors
-colorscheme night-owl
+colorscheme nord
 set linebreak
 
 " needed so deoplete can auto select the first suggestion
@@ -313,7 +313,7 @@ let g:yankring_clipboard_monitor = 0
 " Airline ------------------------------
 
 let g:airline_powerline_fonts = 0
-let g:airline_theme = 'night_owl'
+let g:airline_theme = 'nord'
 let g:airline#extensions#whitespace#enabled = 0
 
 " Coc ---------------------------------
