@@ -33,8 +33,12 @@ set nocompatible
 call plug#begin("~/.config/nvim/plugged")
 
 " Now the actual plugins:
+"
 
-"Numbers
+" Markdown
+Plug ('iamcco/markdown-preview.nvim'), {'do': {-> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+
+" Numbers
 Plug 'myusuf3/numbers.vim'
 
 " Vim + Latex
@@ -50,6 +54,7 @@ Plug 'ayu-theme/ayu-vim'
 Plug 'sts10/vim-pink-moon'
 Plug 'joshdick/onedark.vim'
 Plug 'haishanh/night-owl.vim'
+Plug 'b4skyx/serenade'
 
 " Autoformat
 " Plug 'Chiel92/vim-autoformat'
@@ -83,7 +88,6 @@ Plug 'tpope/vim-surround'
 " Auto-close
 " Plug 'Townk/vim-autoclose'
 Plug 'jiangmiao/auto-pairs'
-
 
 " Syntax highlighting
 Plug 'sheerun/vim-polyglot'
@@ -131,7 +135,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'Yggdroot/indentLine'
 
 " Snippets
-
 Plug 'honza/vim-snippets'
 
 " Tell vim-plug we finished declaring plugins, so it can load them
@@ -163,7 +166,7 @@ set fillchars+=vert:\
 
 let ayucolor="mirage"
 set termguicolors
-colorscheme nord
+colorscheme serenade
 set linebreak
 
 " needed so deoplete can auto select the first suggestion
@@ -313,7 +316,7 @@ let g:yankring_clipboard_monitor = 0
 " Airline ------------------------------
 
 let g:airline_powerline_fonts = 0
-let g:airline_theme = 'nord'
+let g:airline_theme = 'serenade'
 let g:airline#extensions#whitespace#enabled = 0
 
 " Coc ---------------------------------
