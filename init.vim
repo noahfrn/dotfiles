@@ -24,8 +24,10 @@ if vim_plug_just_installed
     :execute 'source '.fnameescape(vim_plug_path)
 endif
 
-
 set nocompatible
+syntax on
+filetype plugin on
+
 " ============================================================================
 " Active plugins
 " You can disable or add new ones here:
@@ -33,7 +35,6 @@ set nocompatible
 call plug#begin("~/.config/nvim/plugged")
 
 " Now the actual plugins:
-"
 
 " Markdown
 Plug ('iamcco/markdown-preview.nvim'), {'do': {-> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
@@ -44,20 +45,8 @@ Plug 'myusuf3/numbers.vim'
 " Vim + Latex
 Plug 'lervag/vimtex'
 
-"Color schemes
+"Color scheme
 Plug 'sainnhe/gruvbox-material'
-Plug 'morhetz/gruvbox'
-Plug 'dracula/vim', {'as':'dracula'}
-Plug 'arcticicestudio/nord-vim'
-Plug 'patstockwell/vim-monokai-tasty'
-Plug 'ayu-theme/ayu-vim'
-Plug 'sts10/vim-pink-moon'
-Plug 'joshdick/onedark.vim'
-Plug 'haishanh/night-owl.vim'
-Plug 'b4skyx/serenade'
-
-" Autoformat
-" Plug 'Chiel92/vim-autoformat'
 
 " Code commenter
 Plug 'scrooloose/nerdcommenter'
@@ -164,17 +153,9 @@ set nu
 " remove ugly vertical lines on window division
 set fillchars+=vert:\ 
 
-let ayucolor="mirage"
 set termguicolors
 colorscheme gruvbox-material
 set linebreak
-
-" needed so deoplete can auto select the first suggestion
-" set completeopt+=noinsert
-" comment this line to enable autocompletion preview window
-" (displays documentation related to the selected completion option)
-" disabled by default because preview makes the window flicker
-" set completeopt-=preview
 
 " autocompletion of files and commands behaves like shell
 " (complete only the common part, list the options that match)
@@ -251,6 +232,7 @@ map <F2> :TaskList<CR>
 
 " file finder mapping
 nmap ,e :Files<CR>
+nmap ,E :Files ~<CR>
 " tags (symbols) in current file finder mapping
 nmap ,g :BTag<CR>
 " the same, but with the word under the cursor pre filled
@@ -272,7 +254,9 @@ nmap ,c :Commands<CR>
 
 " Ack.vim ------------------------------
 
+let g:ackprg = 'ag --nogroup --nocolor --column'
 " mappings
+
 nmap ,r :Ack 
 nmap ,wr :execute ":Ack " . expand('<cword>')<CR>
 
@@ -286,7 +270,6 @@ let g:choosewin_overlay_enable = 1
 " Signify ------------------------------
 
 " this first setting decides in which order try to guess your current vcs
-" UPDATE it to reflect your preferences, it will speed up opening files
 let g:signify_vcs_list = ['git']
 " mappings to jump to changed blocks
 nmap <leader>sn <plug>(signify-next-hunk)
@@ -515,7 +498,20 @@ endif
 
 "Indent Guides -----
 let g:indentLine_setColors = 1
+let g:indentLine_setConceal = 0
 
 "CoC Snippets -------
 imap <C-l> <Plug>(coc-snippets-expand)
 
+"Vimwiki -------
+
+let g:vimwiki_list = [{
+    \ 'path': '~/Dropbox/wiki/', 'path_html': '~/Dropbox/htmlwiki/'
+  \ }]
+
+let g:vimwiki_global_ext = 0
+
+au BufNewFile,BufRead *.go set nolist
+
+au TermEnter * setlocal scrolloff=0 
+au TermLeave * setlocal scrolloff=0
