@@ -2,7 +2,6 @@
 " and use a font from https://github.com/ryanoasis/nerd-fonts in your terminal 
 let fancy_symbols_enabled = 1
 
-
 set encoding=utf-8
 
 " ============================================================================
@@ -30,11 +29,8 @@ filetype plugin on
 
 " ============================================================================
 " Active plugins
-" You can disable or add new ones here:
 
 call plug#begin("~/.config/nvim/plugged")
-
-" Now the actual plugins:
 
 " Markdown
 Plug ('iamcco/markdown-preview.nvim'), {'do': {-> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
@@ -47,15 +43,14 @@ Plug 'lervag/vimtex'
 
 "Color scheme
 Plug 'sainnhe/gruvbox-material'
-
-" Code commenter
-Plug 'scrooloose/nerdcommenter'
+Plug 'jaredgorski/spacecamp'
+Plug 'challenger-deep-theme/vim', {'as': 'challenger-deep'}
+Plug 'joshdick/onedark.vim'
+Plug 'pineapplegiant/spaceduck'
+Plug 'cocopon/iceberg.vim'
 
 " Better file browser
 Plug 'scrooloose/nerdtree'
-
-" Class/module browser
-Plug 'majutsushi/tagbar'
 
 " Search results counter
 Plug 'vim-scripts/IndexedSearch'
@@ -68,14 +63,10 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
-" Pending tasks list
-Plug 'fisadev/FixedTaskList.vim'
-
 " Surround
 Plug 'tpope/vim-surround'
 
 " Auto-close
-" Plug 'Townk/vim-autoclose'
 Plug 'jiangmiao/auto-pairs'
 
 " Syntax highlighting
@@ -126,7 +117,12 @@ Plug 'Yggdroot/indentLine'
 " Snippets
 Plug 'honza/vim-snippets'
 
-" Tell vim-plug we finished declaring plugins, so it can load them
+" Floating Term
+Plug 'voldikss/vim-floaterm'
+
+" Golang
+"Plug 'fatih/vim-go', { 'do': 'GoUpdateBinaries' }
+
 call plug#end()
 
 " ============================================================================
@@ -154,7 +150,7 @@ set nu
 set fillchars+=vert:\ 
 
 set termguicolors
-colorscheme gruvbox-material
+colorscheme onedark
 set linebreak
 
 " autocompletion of files and commands behaves like shell
@@ -165,11 +161,7 @@ set wildmode=list:longest
 ca w!! w !sudo tee "%"
 
 " tab navigation mappings
-map tt :tabnew 
-map <M-Right> :tabn<CR>
-imap <M-Right> <ESC>:tabn<CR>
-map <M-Left> :tabp<CR>
-imap <M-Left> <ESC>:tabp<CR>
+map tt :tabnew<CR>
 
 " when scrolling, keep cursor 3 lines away from screen border
 set scrolloff=3
@@ -184,17 +176,10 @@ autocmd BufWritePre *.py :%s/\s\+$//e
 " Plugins settings and mappings
 " Edit them as you wish.
 
-" Tagbar -----------------------------
-
-" toggle tagbar display
-map <F4> :TagbarToggle<CR>
-" autofocus on tagbar open
-let g:tagbar_autofocus = 1
-
 " NERDTree -----------------------------
 
 " toggle nerdtree display
-map <F3> :NERDTreeToggle<CR>
+map <F6> :NERDTreeToggle<CR>
 " open nerdtree with the current file selected
 nmap ,t :NERDTreeFind<CR>
 " don;t show these file types
@@ -222,11 +207,6 @@ function! NERDTreeRefresh()
 endfunction
 
 autocmd BufEnter * call NERDTreeRefresh()
-
-" Tasklist ------------------------------
-
-" show pending tasks list
-map <F2> :TaskList<CR>
 
 " Fzf ------------------------------
 
@@ -299,7 +279,7 @@ let g:yankring_clipboard_monitor = 0
 " Airline ------------------------------
 
 let g:airline_powerline_fonts = 0
-let g:airline_theme = 'gruvbox_material'
+let g:airline_theme = 'onedark'
 let g:airline#extensions#whitespace#enabled = 0
 
 " Coc ---------------------------------
@@ -496,6 +476,9 @@ endif
 
 :set shell=/usr/bin/zsh
 
+au TermEnter * setlocal scrolloff=0
+au TermLeave * setlocal scrolloff=0
+
 "Indent Guides -----
 let g:indentLine_setColors = 1
 let g:indentLine_setConceal = 0
@@ -503,15 +486,13 @@ let g:indentLine_setConceal = 0
 "CoC Snippets -------
 imap <C-l> <Plug>(coc-snippets-expand)
 
-"Vimwiki -------
+" Floating Term -------
 
-let g:vimwiki_list = [{
-    \ 'path': '~/Dropbox/wiki/', 'path_html': '~/Dropbox/htmlwiki/'
-  \ }]
+let g:floaterm_keymap_new   = '<F4>'
+let g:floaterm_keymap_toggle  = '<F1>'
+let g:floaterm_keymap_prev = '<F2>'
+let g:floaterm_keymap_next = '<F3>'
+let g:floaterm_keymap_kill = '<F5>'
 
-let g:vimwiki_global_ext = 0
-
-au BufNewFile,BufRead *.go set nolist
-
-au TermEnter * setlocal scrolloff=0 
-au TermLeave * setlocal scrolloff=0
+" HTML template files ------
+au BufEnter *.tmpl :set ft=html
