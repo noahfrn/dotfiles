@@ -1,5 +1,7 @@
 set encoding=utf-8
 set nocompatible
+filetype plugin on
+syntax on
 
 call plug#begin("~/.config/nvim/autoload/plug.vim")
 
@@ -13,6 +15,7 @@ Plug 'junegunn/fzf.vim'
 
 " Git
 Plug 'tpope/vim-fugitive'
+Plug 'mhinz/vim-signify'
 
 " Latex
 Plug 'lervag/vimtex'
@@ -62,7 +65,6 @@ set linebreak
 
 set wildmode=list:longest
 
-syntax on
 colorscheme base16-black-metal
 
 nnoremap <silent> // :noh<CR>
@@ -97,7 +99,7 @@ let g:airline_powerline_fonts = 1
 
 " Fzf
 
-nmap <Leader>f :Files<CR>
+nmap <Leader>f :GFiles<CR>
 nmap <Leader>F :Files ~<CR>
 
 nmap <Leader>g :BTag<CR>
@@ -282,3 +284,16 @@ imap <C-l> <Plug>(coc-snippets-expand)
 
 " HTML Templates
 au BufEnter *.tmpl :set ft=html
+
+" Signify
+
+let g:signify_vcs_list = ['git']
+nmap <Leader>sn <plug>(signify-next-hunk)
+nmap <Leader>sp <plug>(signify-prev-hunk)
+
+highlight DiffAdd						cterm=bold ctermbg=none ctermfg=119
+highlight DiffDelete				cterm=bold ctermbg=none ctermfg=167
+highlight DiffChange				cterm=bold ctermbg=none ctermfg=227
+highlight SignifySignAdd		cterm=bold ctermbg=237	ctermfg=119 
+highlight SignifySignDelete cterm=bold ctermbg=237	ctermfg=167 
+highlight SignifySignChange	cterm=bold ctermbg=237	ctermfg=227
