@@ -1,288 +1,116 @@
-" To use fancy symbols wherever possible, change this setting from 0 to 1
-" and use a font from https://github.com/ryanoasis/nerd-fonts in your terminal 
-let fancy_symbols_enabled = 1
-
 set encoding=utf-8
-
-" ============================================================================
-" Vim-plug initialization
-" Avoid modifying this section, unless you are very sure of what you are doing
-
-let vim_plug_just_installed = 0
-let vim_plug_path = expand('~/.config/nvim/autoload/plug.vim')
-if !filereadable(vim_plug_path)
-    echo "Installing Vim-plug..."
-    echo ""
-    silent !mkdir -p ~/.config/nvim/autoload
-    silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    let vim_plug_just_installed = 1
-endif
-
-" manually load vim-plug the first time
-if vim_plug_just_installed
-    :execute 'source '.fnameescape(vim_plug_path)
-endif
-
 set nocompatible
-syntax on
-filetype plugin on
 
-" ============================================================================
-" Active plugins
+call plug#begin("~/.config/nvim/autoload/plug.vim")
 
-call plug#begin("~/.config/nvim/plugged")
-
-" Markdown
-Plug ('iamcco/markdown-preview.nvim'), {'do': {-> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-
-" Numbers
-Plug 'myusuf3/numbers.vim'
-
-" Vim + Latex
-Plug 'lervag/vimtex'
-
-"Color scheme
-Plug 'sainnhe/gruvbox-material'
-Plug 'jaredgorski/spacecamp'
-Plug 'challenger-deep-theme/vim', {'as': 'challenger-deep'}
-Plug 'joshdick/onedark.vim'
-Plug 'pineapplegiant/spaceduck'
-Plug 'cocopon/iceberg.vim'
-
-" Better file browser
+" Explorer
 Plug 'scrooloose/nerdtree'
-
-" Search results counter
-Plug 'vim-scripts/IndexedSearch'
-
-" Airline
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-
-" Code and files fuzzy finder
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-
-" Surround
-Plug 'tpope/vim-surround'
-
-" Auto-close
-Plug 'jiangmiao/auto-pairs'
-
-" Syntax highlighting
-Plug 'sheerun/vim-polyglot'
-
-" Indent text object
-Plug 'michaeljsmith/vim-indent-object'
-
-" Indentation based movements
-Plug 'jeetsukumaran/vim-indentwise'
-
-" Ack code search (requires ack installed in the system)
-Plug 'mileszs/ack.vim'
-
-" Paint css colors with the real color
-Plug 'lilydjwg/colorizer'
-
-" Window chooser
-Plug 't9md/vim-choosewin'
-
-" Automatically sort python imports
-Plug 'fisadev/vim-isort'
-
-" Highlight matching html tags
-Plug 'valloric/MatchTagAlways'
-
-" Generate html in a simple way
-Plug 'mattn/emmet-vim'
-
-" Git integration
-Plug 'tpope/vim-fugitive'
-
-" Git/mercurial/others diff icons on the side of the file lines
-Plug 'mhinz/vim-signify'
-
-" Yank history naigation
-Plug 'vim-scripts/YankRing.vim'
-
-" Nice icons in the file explorer and file type status line.
 Plug 'ryanoasis/vim-devicons'
 
-" Coc
+" Fuzzy Finder
+Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install -all' }
+Plug 'junegunn/fzf.vim'
+
+" Git
+Plug 'tpope/vim-fugitive'
+
+" Latex
+Plug 'lervag/vimtex'
+
+" Autocompletion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-" Indent guides
-Plug 'Yggdroot/indentLine'
-
-" Snippets
 Plug 'honza/vim-snippets'
 
-" Floating Term
-Plug 'voldikss/vim-floaterm'
+" Syntax Highlighting
+Plug 'sheerun/vim-polyglot'
 
-" Golang
-"Plug 'fatih/vim-go', { 'do': 'GoUpdateBinaries' }
+" Color
+Plug 'chriskempson/base16-vim'
+
+" Statusline
+Plug 'dawikur/base16-vim-airline-themes'
+Plug 'vim-airline/vim-airline'
+
+" General 
+Plug 'tpope/vim-surround'
+Plug 'jiangmiao/auto-pairs'
+Plug 'Yggdroot/indentLine'
+Plug 'myusuf3/numbers.vim'
+
 
 call plug#end()
 
-" ============================================================================
-" Install plugins the first time vim runs
+let mapleader = " "
 
-if vim_plug_just_installed
-    echo "Installing Bundles, please ignore key map error messages"
-    :PlugInstall
-endif
-
-" ============================================================================
-
-" tabs and spaces handling
 set expandtab
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
 set listchars=tab:\|\
 set list
+set laststatus=2
 
-" show line numbers
+set clipboard+=unnamedplus
+
+set fillchars+=vert:\
+
 set nu
 
-" remove ugly vertical lines on window division
-set fillchars+=vert:\ 
-
 set termguicolors
-colorscheme onedark
+set t_Co=256
 set linebreak
 
-" autocompletion of files and commands behaves like shell
-" (complete only the common part, list the options that match)
 set wildmode=list:longest
 
-" save as sudo
-ca w!! w !sudo tee "%"
+syntax on
+colorscheme base16-black-metal
 
-" tab navigation mappings
-map tt :tabnew<CR>
-
-" when scrolling, keep cursor 3 lines away from screen border
-set scrolloff=3
-
-" clear search results
 nnoremap <silent> // :noh<CR>
 
-" clear empty spaces at the end of lines on save of python files
-autocmd BufWritePre *.py :%s/\s\+$//e
+" Pane navigation
 
-" ============================================================================
-" Plugins settings and mappings
-" Edit them as you wish.
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
 
-" NERDTree -----------------------------
 
-" toggle nerdtree display
-map <F6> :NERDTreeToggle<CR>
-" open nerdtree with the current file selected
+" NERDTree
+
+map <Leader>e :NERDTreeToggle<CR>
 nmap ,t :NERDTreeFind<CR>
-" don;t show these file types
+
 let NERDTreeIgnore = ['\.pyc$', '\.pyo$']
 
-" Enable folder icons
-let g:WebDevIconsUnicodeDecorateFolderNodes = 1
-let g:DevIconsEnableFoldersOpenClose = 1
-
-" Fix directory colors
-" highlight! link NERDTreeFlags NERDTreeDir
-
-" Remove expandable arrow
-let g:WebDevIconsNerdTreeBeforeGlyphPadding = ""
-let g:WebDevIconsUnicodeDecorateFolderNodes = v:true
-let NERDTreeDirArrowExpandable = "\u00a0"
-let NERDTreeDirArrowCollapsible = "\u00a0"
-let NERDTreeNodeDelimiter = "\x07"
-
-" Autorefresh on tree focus
 function! NERDTreeRefresh()
-    if &filetype == "nerdtree"
-        silent exe substitute(mapcheck("R"), "<CR>", "", "")
-    endif
+	if &filetype == "nerdtree"
+		silent exe substitute(mapcheck("R"), "<CR>", "", "")
+	endif
 endfunction
 
 autocmd BufEnter * call NERDTreeRefresh()
 
-" Fzf ------------------------------
+" Airline
 
-" file finder mapping
-nmap ,e :Files<CR>
-nmap ,E :Files ~<CR>
-" tags (symbols) in current file finder mapping
-nmap ,g :BTag<CR>
-" the same, but with the word under the cursor pre filled
-nmap ,wg :execute ":BTag " . expand('<cword>')<CR>
-" tags (symbols) in all files finder mapping
-nmap ,G :Tags<CR>
-" the same, but with the word under the cursor pre filled
-nmap ,wG :execute ":Tags " . expand('<cword>')<CR>
-" general code finder in current file mapping
-nmap ,f :BLines<CR>
-" the same, but with the word under the cursor pre filled
-nmap ,wf :execute ":BLines " . expand('<cword>')<CR>
-" general code finder in all files mapping
-nmap ,F :Lines<CR>
-" the same, but with the word under the cursor pre filled
-nmap ,wF :execute ":Lines " . expand('<cword>')<CR>
-" commands finder mapping
-nmap ,c :Commands<CR>
+let g:airline_theme='base16_black_metal'
+let g:airline_powerline_fonts = 1
 
-" Ack.vim ------------------------------
+" Fzf
 
-let g:ackprg = 'ag --nogroup --nocolor --column'
-" mappings
+nmap <Leader>f :Files<CR>
+nmap <Leader>F :Files ~<CR>
 
-nmap ,r :Ack 
-nmap ,wr :execute ":Ack " . expand('<cword>')<CR>
+nmap <Leader>g :BTag<CR>
+nmap <Leader>G :Tags<CR>
 
-" Window Chooser ------------------------------
+nmap <Leader>l :BLines<CR>
+nmap <Leader>L :Lines<CR>
 
-" mapping
-nmap  -  <Plug>(choosewin)
-" show big letters
-let g:choosewin_overlay_enable = 1
+nmap <Leader>c :Commands<CR>
 
-" Signify ------------------------------
+au FileType fzf tunmap <Esc>
 
-" this first setting decides in which order try to guess your current vcs
-let g:signify_vcs_list = ['git']
-" mappings to jump to changed blocks
-nmap <leader>sn <plug>(signify-next-hunk)
-nmap <leader>sp <plug>(signify-prev-hunk)
-" nicer colors
-highlight DiffAdd           cterm=bold ctermbg=none ctermfg=119
-highlight DiffDelete        cterm=bold ctermbg=none ctermfg=167
-highlight DiffChange        cterm=bold ctermbg=none ctermfg=227
-highlight SignifySignAdd    cterm=bold ctermbg=237  ctermfg=119
-highlight SignifySignDelete cterm=bold ctermbg=237  ctermfg=167
-highlight SignifySignChange cterm=bold ctermbg=237  ctermfg=227
-
-" Autoclose ------------------------------
-
-" Fix to let ESC work as espected with Autoclose plugin
-" (without this, when showing an autocompletion window, ESC won't leave insert
-"  mode)
-let g:AutoClosePumvisible = {"ENTER": "\<C-Y>", "ESC": "\<ESC>"}
-
-" Yankring -------------------------------
-
-let g:yankring_history_dir = '~/.config/nvim/'
-" Fix for yankring and neovim problem when system has non-text things
-" copied in clipboard
-let g:yankring_clipboard_monitor = 0
-
-" Airline ------------------------------
-
-let g:airline_powerline_fonts = 0
-let g:airline_theme = 'onedark'
-let g:airline#extensions#whitespace#enabled = 0
-
-" Coc ---------------------------------
+" Coc 
 
 " TextEdit might fail if hidden is not set.
 set hidden
@@ -363,8 +191,8 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <leader>rn <Plug>(coc-rename)
 
 " Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+xmap <leader>m  <Plug>(coc-format-selected)
+nmap <leader>m  <Plug>(coc-format-selected)
 
 augroup mygroup
   autocmd!
@@ -419,11 +247,6 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 " Add `:OR` command for organize imports of the current buffer.
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
-" Add (Neo)Vim's native statusline support.
-" NOTE: Please see `:h coc-status` for integrations with external plugins that
-" provide custom statusline: lightline.vim, vim-airline.
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-
 " Mappings for CoCList
 " Show all diagnostics.
 nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
@@ -442,57 +265,20 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>l
 
-" Fancy Symbols!!
+" Terminal
 
-if fancy_symbols_enabled
-    let g:webdevicons_enable = 1
-
-    " custom airline symbols
-    if !exists('g:airline_symbols')
-       let g:airline_symbols = {}
-    endif
-    let g:airline_left_sep = ''
-    let g:airline_left_alt_sep = ''
-    let g:airline_right_sep = ''
-    let g:airline_right_alt_sep = ''
-    let g:airline_symbols.branch = '⭠'
-    let g:airline_symbols.readonly = '⭤'
-    let g:airline_symbols.linenr = '⭡'
-else
-    let g:webdevicons_enable = 0
-endif
-
-" Custom configurations ----------------
-
-" Include user's custom nvim configurations
-let custom_configs_path = "~/.config/nvim/custom.vim"
-if filereadable(expand(custom_configs_path))
-  execute "source " . custom_configs_path
-endif
-
-" Terminal --------
-
-:tnoremap <Esc> <C-\><C-n>
-
-:set shell=/usr/bin/zsh
+au TermOpen * tnoremap <Esc> <C-\><C-n>
+set shell=/usr/bin/zsh
 
 au TermEnter * setlocal scrolloff=0
-au TermLeave * setlocal scrolloff=0
+au TermLeave * setlocal scrolloff=0 
 
-"Indent Guides -----
+" Indent Lines
 let g:indentLine_setColors = 1
-let g:indentLine_setConceal = 0
+let g:indentLine_setConceal = 0 
 
-"CoC Snippets -------
+" Snippets
 imap <C-l> <Plug>(coc-snippets-expand)
 
-" Floating Term -------
-
-let g:floaterm_keymap_new   = '<F4>'
-let g:floaterm_keymap_toggle  = '<F1>'
-let g:floaterm_keymap_prev = '<F2>'
-let g:floaterm_keymap_next = '<F3>'
-let g:floaterm_keymap_kill = '<F5>'
-
-" HTML template files ------
+" HTML Templates
 au BufEnter *.tmpl :set ft=html
