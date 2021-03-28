@@ -29,6 +29,7 @@ Plug 'sheerun/vim-polyglot'
 
 " Color
 Plug 'chriskempson/base16-vim'
+Plug 'joshdick/onedark.vim'
 
 " Statusline
 Plug 'dawikur/base16-vim-airline-themes'
@@ -45,13 +46,13 @@ call plug#end()
 
 let mapleader = " "
 
-set expandtab
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 set listchars=tab:\|\
 set list
 set laststatus=2
+set expandtab
 
 set clipboard+=unnamedplus
 
@@ -65,7 +66,7 @@ set linebreak
 
 set wildmode=list:longest
 
-colorscheme base16-black-metal
+colorscheme onedark
 
 nnoremap <silent> // :noh<CR>
 
@@ -85,21 +86,21 @@ nmap ,t :NERDTreeFind<CR>
 let NERDTreeIgnore = ['\.pyc$', '\.pyo$']
 
 function! NERDTreeRefresh()
-	if &filetype == "nerdtree"
-		silent exe substitute(mapcheck("R"), "<CR>", "", "")
-	endif
+    if &filetype == "nerdtree"
+        silent exe substitute(mapcheck("R"), "<CR>", "", "")
+    endif
 endfunction
 
 autocmd BufEnter * call NERDTreeRefresh()
 
 " Airline
 
-let g:airline_theme='base16_black_metal'
+let g:airline_theme='onedark'
 let g:airline_powerline_fonts = 1
 
 " Fzf
 
-nmap <Leader>f :GFiles<CR>
+nmap <Leader>f :Files<CR>
 nmap <Leader>F :Files ~<CR>
 
 nmap <Leader>g :BTag<CR>
@@ -251,21 +252,21 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 
 " Mappings for CoCList
 " Show all diagnostics.
-nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+nnoremap <silent><nowait> //a  :<C-u>CocList diagnostics<cr>
 " Manage extensions.
-nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
+nnoremap <silent><nowait> //e  :<C-u>CocList extensions<cr>
 " Show commands.
-nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
+nnoremap <silent><nowait> //c  :<C-u>CocList commands<cr>
 " Find symbol of current document.
-nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
+nnoremap <silent><nowait> //o  :<C-u>CocList outline<cr>
 " Search workspace symbols.
-nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+nnoremap <silent><nowait> //s  :<C-u>CocList -I symbols<cr>
 " Do default action for next item.
-nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
+nnoremap <silent><nowait> //j  :<C-u>CocNext<CR>
 " Do default action for previous item.
-nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
+nnoremap <silent><nowait> //k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
-nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>l
+nnoremap <silent><nowait> //p  :<C-u>CocListResume<CR>l
 
 " Terminal
 
@@ -291,9 +292,9 @@ let g:signify_vcs_list = ['git']
 nmap <Leader>sn <plug>(signify-next-hunk)
 nmap <Leader>sp <plug>(signify-prev-hunk)
 
-highlight DiffAdd						cterm=bold ctermbg=none ctermfg=119
-highlight DiffDelete				cterm=bold ctermbg=none ctermfg=167
-highlight DiffChange				cterm=bold ctermbg=none ctermfg=227
-highlight SignifySignAdd		cterm=bold ctermbg=237	ctermfg=119 
-highlight SignifySignDelete cterm=bold ctermbg=237	ctermfg=167 
-highlight SignifySignChange	cterm=bold ctermbg=237	ctermfg=227
+highlight DiffAdd           cterm=bold ctermbg=none ctermfg=119
+highlight DiffDelete        cterm=bold ctermbg=none ctermfg=167
+highlight DiffChange        cterm=bold ctermbg=none ctermfg=227
+highlight SignifySignAdd    cterm=bold ctermbg=237  ctermfg=119
+highlight SignifySignDelete cterm=bold ctermbg=237  ctermfg=167
+highlight SignifySignChange cterm=bold ctermbg=237  ctermfg=227
