@@ -66,7 +66,7 @@ set linebreak
 
 set wildmode=list:longest
 
-colorscheme onedark
+colorscheme base16-black-metal
 
 nnoremap <silent> // :noh<CR>
 
@@ -95,7 +95,7 @@ autocmd BufEnter * call NERDTreeRefresh()
 
 " Airline
 
-let g:airline_theme='onedark'
+let g:airline_theme='base16_black_metal'
 let g:airline_powerline_fonts = 1
 
 " Fzf
