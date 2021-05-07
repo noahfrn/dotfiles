@@ -66,7 +66,7 @@ set linebreak
 
 set wildmode=list:longest
 
-colorscheme base16-black-metal
+colorscheme onedark
 
 nnoremap <silent> // :noh<CR>
 
@@ -95,7 +95,7 @@ autocmd BufEnter * call NERDTreeRefresh()
 
 " Airline
 
-let g:airline_theme='base16_black_metal'
+let g:airline_theme='onedark'
 let g:airline_powerline_fonts = 1
 
 " Fzf
@@ -271,7 +271,6 @@ nnoremap <silent><nowait> //p  :<C-u>CocListResume<CR>l
 " Terminal
 
 au TermOpen * tnoremap <Esc> <C-\><C-n>
-set shell=/usr/bin/zsh
 
 au TermEnter * setlocal scrolloff=0
 au TermLeave * setlocal scrolloff=0 
@@ -298,3 +297,5 @@ highlight DiffChange        cterm=bold ctermbg=none ctermfg=227
 highlight SignifySignAdd    cterm=bold ctermbg=237  ctermfg=119
 highlight SignifySignDelete cterm=bold ctermbg=237  ctermfg=167
 highlight SignifySignChange cterm=bold ctermbg=237  ctermfg=227
+
+let g:vimtex_view_general_viewer = 'zathura'
