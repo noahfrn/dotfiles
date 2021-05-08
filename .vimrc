@@ -96,6 +96,7 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
     Plug 'elixir-editors/vim-elixir'
+    Plug 'preservim/nerdtree'
 
   call plug#end()
 
@@ -144,6 +145,10 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   nnoremap <silent> <leader>o :Commands<CR>
   nnoremap <silent> <leader><Tab> :Buffers<CR>
 
+  nnoremap <silent> <leader>c :NERDTreeToggle<CR>
+  autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
+    \ quit | endif
+
   set updatetime=100
 
   au FileType go nmap <leader>t :GoTest!<CR>
@@ -155,7 +160,7 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
 
   au FileType tex nmap <leader>c :VimtexCompile<CR>
   au FileType tex nmap <leader>w :VimtexCountWords<CR>
-  au FileType tex nmap <leader>e :VimtexErrors<CR>
+  au FileType tex nmap <leader>r :VimtexErrors<CR>
 
   let g:vimtex_view_method = 'zathura'
 
