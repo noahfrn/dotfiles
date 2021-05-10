@@ -71,7 +71,7 @@ set ttyfast
 filetype plugin on
 
 if v:version >= 800 && executable('curl') && empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs 
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall
 endif
@@ -100,7 +100,8 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
 
   call plug#end()
 
-  hi Normal ctermbg=NONE
+  hi Normal ctermbg=NONE guibg=NONE
+  hi SignColumn ctermbg=darkgrey
   hi SpellBad ctermbg=red
   hi SpellRare ctermbg=red
   hi Special ctermfg=cyan
@@ -219,6 +220,3 @@ au BufNewFile,BufRead *.py set autoindent
 au BufNewFile,BufRead *.py set tabstop=4
 au BufNewFile,BufRead *.py set softtabstop=4
 au BufNewFile,BufRead *.py set shiftwidth=4
-
-au BufNewFile,BufRead *.py set foldmethod=indent
-
