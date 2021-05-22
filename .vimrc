@@ -146,7 +146,7 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   nnoremap <silent> <leader>o :Commands<CR>
   nnoremap <silent> <leader><Tab> :Buffers<CR>
 
-  nnoremap <silent> <leader>c :NERDTreeToggle<CR>
+  nnoremap <silent> <leader>e :NERDTreeToggle<CR>
   autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
     \ quit | endif
 
