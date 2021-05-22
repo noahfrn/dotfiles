@@ -158,6 +158,7 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   au FileType go nmap <leader>c :GoCoverageToggle<CR>
   au FileType go nmap <leader>i :GoInfo<CR>
   au FileType go nmap <leader>l :GoMetaLinter!<CR>
+  au FileType go nmap <leader>r :GoRun<CR>
 
   au FileType tex nmap <leader>c :VimtexCompile<CR>
   au FileType tex nmap <leader>w :VimtexCountWords<CR>
