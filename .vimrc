@@ -82,7 +82,6 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
 
   call plug#begin('~/.vimplugins')
 
-    Plug 'z0mbix/vim-shfmt'
     Plug 'vim-pandoc/vim-pandoc'
     Plug 'sheerun/vim-polyglot'
     Plug 'cespare/vim-toml'
@@ -91,12 +90,12 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-commentary'
-    Plug 'rwxrob/vim-pandoc-syntax-simple'
+    Plug 'vim-pandoc/vim-pandoc-syntax'
     Plug 'lervag/vimtex'
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
-    Plug 'elixir-editors/vim-elixir'
     Plug 'preservim/nerdtree'
+    Plug 'davidhalter/jedi-vim'
 
   call plug#end()
 
@@ -119,14 +118,11 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   set statusline+=%*\ %p%%%*
   set cmdheight=1
 
-  let g:shfmt_fmt_on_save = 1
-  let g:shfmt_extra_args = '-i 2'
-
   let g:go_fmt_fail_silently = 0
   let g:go_fmt_command = 'goimports'
   let g:go_fmt_autosave = 1
   let g:go_gopls_enabled = 1
-	let g:go_highlight_types = 1
+  let g:go_highlight_types = 1
   let g:go_highlight_fields = 1
   let g:go_highlight_functions = 1
   let g:go_highlight_function_calls = 1
@@ -139,6 +135,8 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   let g:go_highlight_diagnostic_warnings = 1
   let g:go_auto_type_info = 1
   let g:go_auto_sameids = 0
+
+  let g:jedi#completions_enabled = 0
 
   nnoremap <silent> <leader><leader> :Files<CR>
   nnoremap <silent> <leader>F :Files ~<CR>
