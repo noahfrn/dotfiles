@@ -41,6 +41,8 @@ require('packer').startup(function()
   use {'kristijanhusak/orgmode.nvim', config = function ()
 	  require('orgmode').setup{}
   end}
+  use 'vimwiki/vimwiki'
+  use 'hashivim/vim-terraform'
 end)
 
 --Incremental live completion
@@ -179,7 +181,7 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 -- Enable the following language servers
-local servers = { 'pyright', 'gopls' }
+local servers = { 'pyright', 'gopls', 'yamlls', 'terraformls' }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
