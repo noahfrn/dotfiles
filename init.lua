@@ -79,6 +79,11 @@ vim.o.termguicolors = true
 vim.g.onedark_terminal_italics = 2
 vim.cmd [[colorscheme onedark]]
 
+--Tab setings
+vim.o.shiftwidth = 2
+vim.o.tabstop = 2
+vim.o.expandtab = true
+vim.o.softtabstop = 2
 
 --Set statusbar
 vim.g.lightline = {
@@ -354,3 +359,6 @@ require('nvim-autopairs').setup{}
 require('orgmode').setup({
 org_default_notes_file = {'~/org/general.org'},
 })
+
+--Filetype autocmds
+vim.cmd [[ autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4 ]]
