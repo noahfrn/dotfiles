@@ -7,3 +7,5 @@ keymaps.load()
 loader = require("loader")
 loader.init()
 loader.load(require("plugins"))
+
+vim.cmd [[colorscheme onedark]]
