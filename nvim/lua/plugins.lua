@@ -1,6 +1,19 @@
 return {
   { "wbthomason/packer.nvim" },
   { "neovim/nvim-lspconfig" },
+  -- LSP TODO
+  -- TreeSitter
+  {
+    "nvim-treesitter/nvim-treesitter",
+    config = function()
+      require("plugins.treesitter").setup() -- TODO
+    end,
+  },
+  {
+    "JoosepAlviste/nvim-ts-context-commentstring",
+    event = "BufReadPost",
+  },
+  -- SideBar TODO
   -- Telescope
   {
     "nvim-telescope/telescope.nvim",
@@ -26,6 +39,15 @@ return {
       require("plugins.comment").setup()
     end,
   },
+  -- Terminal
+  {
+    "akinsho/toggleterm.nvim",
+    event = "BufWinEnter",
+    config = function()
+      require("plugins.terminal").setup()
+    end,
+  },
+  -- Autopairs TODO
   -- Colorschemes
   {"navarasu/onedark.nvim"},
 }

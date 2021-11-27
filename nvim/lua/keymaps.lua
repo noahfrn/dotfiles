@@ -9,11 +9,20 @@ local default_keymaps = {
       ["<leader>k"] = ":nohlsearch<cr>",
       ["<leader>Q"] = ":bufdo bdelete<cr>",
       ["<leader>x"] = ":!xdg-open %<cr><cr>",
-      ["<leader>pc"] = "<cmd>lua require('loader').recompile()<cr>",
       ["<C-h>"] = "<C-w>h",
       ["<C-j>"] = "<C-w>j",
       ["<C-k>"] = "<C-w>k",
       ["<C-l>"] = "<C-w>l",
+      -- Packer
+      ["<leader>pc"] = ":lua require('loader').recompile()<cr>",
+      -- Telescope
+      ["<leader>ff"] = ":Telescope find_files<cr>",
+      ["<leader>fg"] = ":Telescope git_branches<cr>",
+      ["<leader>fr"] = ":Telescope oldfiles<cr>",
+      ["<leader>ft"] = ":Telescope live_grep<cr>",
+      ["<leader>fk"] = ":Telescope keymaps<cr>",
+      ["<leader>fc"] = ":Telescope commands<cr>",
+      ["<leader>fb"] = ":Telescope buffers<cr>",
     },
     i = {
       ["jj"] = "<esc>",
