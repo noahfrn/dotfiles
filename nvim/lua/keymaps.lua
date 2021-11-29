@@ -16,13 +16,17 @@ local default_keymaps = {
       -- Packer
       ["<leader>pc"] = ":lua require('loader').recompile()<cr>",
       -- Telescope
-      ["<leader>ff"] = ":Telescope find_files<cr>",
+      ["<leader><leader>"] = ":Telescope find_files<cr>",
+      ["<leader>ff"] = ":Telescope treesitter<cr>",
       ["<leader>fg"] = ":Telescope git_branches<cr>",
       ["<leader>fr"] = ":Telescope oldfiles<cr>",
       ["<leader>ft"] = ":Telescope live_grep<cr>",
       ["<leader>fk"] = ":Telescope keymaps<cr>",
       ["<leader>fc"] = ":Telescope commands<cr>",
       ["<leader>fb"] = ":Telescope buffers<cr>",
+      ["<leader>fh"] = ":Telescope help_tags<cr>", 
+      -- SideBar
+      ["<leader>e"] = ":NvimTreeToggle<cr>",
     },
     i = {
       ["jj"] = "<esc>",

@@ -1,7 +1,6 @@
 local M = {}
 
 local comment_opts = {
-  active = true,
   padding = true,
   ignore = "^$",
   mappings = {
