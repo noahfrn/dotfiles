@@ -85,6 +85,9 @@ return {
   -- TPope
   { "tpope/vim-surround" },
   { "tpope/vim-dispatch" },
+  -- Debugger
+  { "Pocco81/DAPInstall.nvim" },
+  { "mfussenegger/nvim-dap" },
   -- Colorschemes
   {"navarasu/onedark.nvim"},
 }

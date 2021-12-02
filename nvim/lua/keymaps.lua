@@ -6,6 +6,7 @@ local map_leader = " "
 local default_keymaps = {
     n = {
       ["<leader>ve"] = ":edit ~/.config/nvim/init.lua<cr>",
+      ["<leader>vk"] = ":edit ~/.config/nvim/lua/keymaps.lua<cr>",
       ["<leader>k"] = ":nohlsearch<cr>",
       ["<leader>Q"] = ":bufdo bdelete<cr>",
       ["<leader>x"] = ":!xdg-open %<cr><cr>",
@@ -27,6 +28,25 @@ local default_keymaps = {
       ["<leader>fh"] = ":Telescope help_tags<cr>", 
       -- SideBar
       ["<leader>e"] = ":NvimTreeToggle<cr>",
+      -- Debugger
+      ["<leader>dt"] = ":lua require('dap').toggle_breakpoint()<cr>",
+      ["<leader>db"] = ":lua require('dap').step_back()<cr>",
+      ["<leader>dc"] = ":lua require('dap').continue()<cr>",
+      ["<leader>dC"] = ":lua require('dap').run_to_cursor()<cr>",
+      ["<leader>dd"] = ":lua require('dap').disconnect()<cr>",
+      ["<leader>dg"] = ":lua require('dap').session()<cr>",
+      ["<leader>di"] = ":lua require('dap').step_into()<cr>",
+      ["<leader>do"] = ":lua require('dap').step_over()<cr>",
+      ["<leader>du"] = ":lua require('dap').step_out()<cr>",
+      ["<leader>dp"] = ":lua require('dap').pause.toggle()<cr>",
+      ["<leader>dr"] = ":lua require('dap').repl.toggle()<cr>",
+      ["<leader>ds"] = ":lua require('dap').continue()<cr>",
+      ["<leader>dq"] = ":lua require('dap').close()<cr>",
+      -- Dispatch
+      ["<leader>mm"] = ":Make ",
+      ["<leader>mM"] = ":Make! ",
+      ["<leader>mc"] = ":Copen<cr>",
+      ["<leader>mC"] = ":cclose<cr>",
     },
     i = {
       ["jj"] = "<esc>",
