@@ -88,6 +88,16 @@ return {
   -- Debugger
   { "Pocco81/DAPInstall.nvim" },
   { "mfussenegger/nvim-dap" },
+  -- GitSigns
+  {
+    "lewis6991/gitsigns.nvim",
+    config = function()
+      require("plugins.gitsigns").setup()
+    end,
+    requires = {
+      { "nvim-lua/plenary.nvim" }
+    },
+  },
   -- Colorschemes
   {"navarasu/onedark.nvim"},
 }

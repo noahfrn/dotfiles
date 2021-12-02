@@ -7,6 +7,7 @@ local default_keymaps = {
     n = {
       ["<leader>ve"] = ":edit ~/.config/nvim/init.lua<cr>",
       ["<leader>vk"] = ":edit ~/.config/nvim/lua/keymaps.lua<cr>",
+      ["<leader>vp"] = ":edit ~/.config/nvim/lua/plugins.lua<cr>",
       ["<leader>k"] = ":nohlsearch<cr>",
       ["<leader>Q"] = ":bufdo bdelete<cr>",
       ["<leader>x"] = ":!xdg-open %<cr><cr>",
@@ -19,7 +20,6 @@ local default_keymaps = {
       -- Telescope
       ["<leader><leader>"] = ":Telescope find_files<cr>",
       ["<leader>ff"] = ":Telescope treesitter<cr>",
-      ["<leader>fg"] = ":Telescope git_branches<cr>",
       ["<leader>fr"] = ":Telescope oldfiles<cr>",
       ["<leader>ft"] = ":Telescope live_grep<cr>",
       ["<leader>fk"] = ":Telescope keymaps<cr>",
@@ -47,6 +47,21 @@ local default_keymaps = {
       ["<leader>mM"] = ":Make! ",
       ["<leader>mc"] = ":Copen<cr>",
       ["<leader>mC"] = ":cclose<cr>",
+      -- Git
+      ["<leader>gj"] = ":lua require('gitsigns').next_hunk()<cr>",
+      ["<leader>gk"] = ":lua require('gitsigns').prev_hunk()<cr>",
+      ["<leader>gl"] = ":lua require('gitsigns').blame_line()<cr>",
+      ["<leader>gp"] = ":lua require('gitsigns').preview_hunk()<cr>",
+      ["<leader>gr"] = ":lua require('gitsigns').reset_hunk()<cr>",
+      ["<leader>gR"] = ":lua require('gitsigns').reset_buffer()<cr>",
+      ["<leader>gs"] = ":lua require('gitsigns').stage_hunk()<cr>",
+      ["<leader>gS"] = ":lua require('gitsigns').stage_buffer{full=true}<cr>",
+      ["<leader>gu"] = ":lua require('gitsigns').undo_stage_hunk()<cr>",
+      ["<leader>go"] = ":Telescope git_status<cr>",
+      ["<leader>gb"] = ":Telescope git_branches<cr>",
+      ["<leader>gc"] = ":Telescope git_commits<cr>",
+
+    --
     },
     i = {
       ["jj"] = "<esc>",
@@ -54,6 +69,9 @@ local default_keymaps = {
     v = {
       ["<"] = "<gv",
       [">"] = ">gv",
+      -- Git
+      ["<leader>gs"] = ":lua require'gitsigns'.stage_hunk({vim.fn.line('.'), vim.fn.line('v')})<CR>",
+      ["<leader>gr"] = "<cmd>lua require'gitsigns'.reset_hunk({vim.fn.line('.'), vim.fn.line('v')})<CR>",
     },
     [""] = {
       ["gf"] = ":edit <cfile><cr>"
