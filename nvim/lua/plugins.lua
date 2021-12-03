@@ -4,7 +4,7 @@ return {
   { "neovim/nvim-lspconfig" },
   { "williamboman/nvim-lsp-installer"},
   -- Completion
-  { 
+  {
     "hrsh7th/nvim-cmp",
     config = function()
       require("plugins.cmp").setup()

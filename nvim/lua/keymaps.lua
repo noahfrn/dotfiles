@@ -19,13 +19,13 @@ local default_keymaps = {
       ["<leader>pc"] = ":lua require('loader').recompile()<cr>",
       -- Telescope
       ["<leader><leader>"] = ":Telescope find_files<cr>",
-      ["<leader>ff"] = ":Telescope treesitter<cr>",
+      ["<leader>ft"] = ":Telescope treesitter<cr>",
       ["<leader>fr"] = ":Telescope oldfiles<cr>",
-      ["<leader>ft"] = ":Telescope live_grep<cr>",
+      ["<leader>fg"] = ":Telescope live_grep<cr>",
       ["<leader>fk"] = ":Telescope keymaps<cr>",
       ["<leader>fc"] = ":Telescope commands<cr>",
       ["<leader>fb"] = ":Telescope buffers<cr>",
-      ["<leader>fh"] = ":Telescope help_tags<cr>", 
+      ["<leader>fh"] = ":Telescope help_tags<cr>",
       -- SideBar
       ["<leader>e"] = ":NvimTreeToggle<cr>",
       -- Debugger
