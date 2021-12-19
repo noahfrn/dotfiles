@@ -1,0 +1,11 @@
+let mapleader=" "
+
+set surround
+set commentary
+
+set showmode
+set so=5
+set incsearch
+set nu
+
+map Q gq
