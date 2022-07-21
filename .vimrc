@@ -53,6 +53,7 @@ let maplocalleader=","
 nnoremap <leader>k :noh<CR>
 nnoremap <leader><leader> :Files<CR>
 nnoremap <leader>g :Git<CR>
+nnoremap <leader>gp :Git push<CR>
 nnoremap <leader>t :tab ter++kill=hup<CR>
 nnoremap <leader>s :Ag<CR>
 nnoremap <leader>b :Buffers<CR>
