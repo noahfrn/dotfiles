@@ -57,6 +57,7 @@ nnoremap <leader>t :tab ter++kill=hup<CR>
 nnoremap <leader>s :Ag<CR>
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>d :Dispatch
+nnoremap <leader>m :Make
 nnoremap <leader>f :Focus
 nnoremap <leader>q :Copen<CR>
 nnoremap H gT
