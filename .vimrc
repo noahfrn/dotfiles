@@ -17,8 +17,8 @@ set cmdheight=2
 set updatetime=300
 set shortmess+=c
 set signcolumn=yes
-set noeb vb t_vb
-
+set mouse=a
+set t_vb=
 
 "Plugins
 call plug#begin()
@@ -36,6 +36,7 @@ Plug 'tpope/vim-sensible'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-dispatch'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'honza/vim-snippets'
 call plug#end()
 
 "Colors
@@ -52,20 +53,20 @@ let mapleader=" "
 let maplocalleader=","
 nnoremap <leader>k :noh<CR>
 nnoremap <leader><leader> :Files<CR>
-nnoremap <leader>g :Git<CR>
-nnoremap <leader>gp :Git push<CR>
+nnoremap <leader>g :Git
 nnoremap <leader>t :tab ter++kill=hup<CR>
 nnoremap <leader>s :Ag<CR>
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>d :Dispatch
-nnoremap <leader>f :Focus
+nnoremap <leader>f :Format<CR>
+nnoremap <leader>m :Make
 nnoremap <leader>q :Copen<CR>
+nnoremap <leader>e :Focus
 nnoremap H gT
 nnoremap L gt
 vnoremap > >gv
 vnoremap < <gv
 tnoremap <S-Tab> <C-W>:tabprevious<CR>
-tnoremap <C-N>   <C-W>N
 
 "Cursor shape in Iterm2/Tmux
 let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
@@ -77,15 +78,18 @@ let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ CheckBackspace() ? "\<TAB>" :
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-function! CheckBackspace() abort
+function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
+
+let g:coc_snippet_next = '<Tab>'
+let g:coc_snippet_prev = '<S-Tab>'
 
 " Use <c-space> to trigger completion.
 if has('nvim')
