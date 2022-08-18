@@ -1,11 +1,99 @@
-let mapleader=" "
+let mapleader = " "
 
-set surround
-set commentary
-
-set showmode
+" Settings
 set so=5
-set incsearch
 set nu
+set showmode
+set visualbell
+set clipboard+=unnamed
+set clipboard+=ideaput
+set incsearch
 
+" Plugins
+" TODO - set easymotion
+set commentary
+set surround
+Plug 'preservim/nerdtree'
+
+" .ideavimrc
+nnoremap ,e :e ~/.ideavimrc<CR>
+nnoremap ,r :source ~/.ideavimrc<CR>
+
+" Defaults
 map Q gq
+
+" Terminal
+nnoremap <leader>tt :action ActivateTerminalToolWindow<CR>
+nnoremap <leader>th :action Terminal.OpenInTerminal<CR>
+
+" Panes
+sethandler <c-w> a:vim
+sethandler <c-m> a:vim
+sethandler <c-=> a:vim
+nnoremap <c-w>= :action Unsplit<CR>
+nnoremap <c-=> <c-w>=
+nnoremap <c-m> :action MoveEditorToOppositeTabGroup<CR>
+sethandler <c-h> a:vim
+sethandler <c-j> a:vim
+sethandler <c-k> a:vim
+sethandler <c-l> a:vim
+nnoremap <c-h> <c-w>h
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-l> <c-w>l
+
+" Tabs
+nnoremap <TAB> :action PreviousTab<CR>
+nnoremap <s-TAB> :action NextTab<CR>
+
+" Windows
+sethandler <c-x> a:vim
+sethandler <c-p> a:vim
+nnoremap <c-x> :action HideAllWindows<CR>
+nnoremap <c-p> :action JumpToLastWindow<CR>
+
+" Formatting & refactoring
+nnoremap <leader>f :action ReformatCode<CR>
+nnoremap <leader>o :action OptimizeImports<CR>
+nnoremap <leader>q :action Refactorings.QuickListPopupAction<CR>
+
+" Gotos
+nnoremap <leader><leader> :action GotoFile<CR>
+nnoremap <leader>a :action GotoAction<CR>
+nnoremap <leader>g :action FindInPath<CR>
+nnoremap <leader>u :action FindUsages<CR>
+nnoremap <leader>c :action GotoClass<CR>
+nnoremap <leader>s :action GotoSymbol<CR>
+nnoremap <leader>l :action RecentLocations<CR>
+
+" Running
+nnoremap <leader>rr :action Run<CR>
+nnoremap <leader>rw :action ActivateRunToolWindow<CR>
+nnoremap <leader>ru :action Rerun<CR>
+nnoremap <leader>rc :action ChooseRunConfiguration<CR>
+nnoremap <leader>rt :action RerunFailedTests<CR>
+
+" Debugging
+nnoremap <leader>dd :action Debug<CR>
+nnoremap <leader>db :action ToggleLineBreakpoint<CR>
+nnoremap <leader>dw :action ActivateDebugToolWindow<CR>
+
+" Code navigation
+nnoremap [[ :action MethodUp<CR>
+nnoremap ]] :action MethodDown<CR>
+nnoremap zc :action CollapseRegion<CR>
+nnoremap zo :action ExpandRegion<CR>
+nnoremap <leader>zc :action CollapseAllRegions<CR>
+nnoremap <leader>zo :action ExpandAllRegions<CR>
+nnoremap ge :action GotoNextError<CR>
+nnoremap gE :action GotoPreviousError<CR>
+nnoremap <leader>h :action CallHierarchy<CR>
+nnoremap <leader>b :action FileStructurePopup<CR>
+
+" Indenting
+vnoremap < <gv
+vnoremap > >gv
+
+" NERDTree
+sethandler <c-t> a:vim
+nnoremap <c-t> :NERDTree<CR>
