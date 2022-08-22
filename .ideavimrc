@@ -56,6 +56,7 @@ nnoremap <c-p> :action JumpToLastWindow<CR>
 nnoremap <leader>f :action ReformatCode<CR>
 nnoremap <leader>o :action OptimizeImports<CR>
 nnoremap <leader>q :action Refactorings.QuickListPopupAction<CR>
+nnoremap <leader>m :action Generate<CR>
 
 " Gotos
 nnoremap <leader><leader> :action GotoFile<CR>
