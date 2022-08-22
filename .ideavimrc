@@ -78,6 +78,10 @@ nnoremap <leader>dd :action Debug<CR>
 nnoremap <leader>db :action ToggleLineBreakpoint<CR>
 nnoremap <leader>dw :action ActivateDebugToolWindow<CR>
 
+" Building
+nnoremap <leader>bb :action BuildMenu<CR>
+nnoremap <leader>bw :action ActivateBuildToolWindow<CR>
+
 " Code navigation
 nnoremap [[ :action MethodUp<CR>
 nnoremap ]] :action MethodDown<CR>
@@ -88,7 +92,8 @@ nnoremap <leader>zo :action ExpandAllRegions<CR>
 nnoremap ge :action GotoNextError<CR>
 nnoremap gE :action GotoPreviousError<CR>
 nnoremap <leader>h :action CallHierarchy<CR>
-nnoremap <leader>b :action FileStructurePopup<CR>
+nnoremap <leader>x :action FileStructurePopup<CR>
+nnoremap gi :action GotoImplementation<CR>
 
 " Indenting
 vnoremap < <gv
