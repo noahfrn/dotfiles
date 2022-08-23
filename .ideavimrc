@@ -95,6 +95,9 @@ nnoremap gE :action GotoPreviousError<CR>
 nnoremap <leader>h :action CallHierarchy<CR>
 nnoremap <leader>x :action FileStructurePopup<CR>
 nnoremap gi :action GotoImplementation<CR>
+nnoremap gd :action GotoDeclaration<CR>
+nnoremap gt :action GotoTest<CR>
+nnoremap gp :action GotoSuperMethod<CR>
 
 " Indenting
 vnoremap < <gv
