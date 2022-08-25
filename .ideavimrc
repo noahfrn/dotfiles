@@ -10,9 +10,10 @@ set clipboard+=ideaput
 set incsearch
 
 " Plugins
-" TODO - set easymotion
 set commentary
 set surround
+set easymotion
+set ideajoin
 Plug 'preservim/nerdtree'
 
 " .ideavimrc
@@ -65,7 +66,7 @@ nnoremap <leader>/ :action FindInPath<CR>
 nnoremap <leader>u :action FindUsages<CR>
 nnoremap <leader>c :action GotoClass<CR>
 nnoremap <leader>s :action GotoSymbol<CR>
-nnoremap <leader>l :action RecentLocations<CR>
+nnoremap <leader>l :action RecentFiles<CR>
 
 " Running
 nnoremap <leader>rr :action Run<CR>
@@ -108,7 +109,12 @@ nnoremap <leader>po :action ManageRecentProjects<CR>
 nnoremap <leader>pc :action CloseProject<CR>
 
 " Git
+nnoremap <leader>gg :action Vcs.QuickListPopupAction<CR>
 nnoremap <leader>gb :action Git.Branches<CR>
+nnoremap <leader>gf :action Git.Fetch<CR>
+nnoremap <leader>gp :action Vcs.Push<CR>
+nnoremap <leader>gl :action Git.Pull<CR>
+nnoremap <leader>gr :action Github.View.Pull.Request<CR>
 nnoremap <leader>ga :action Annotate<CR>
 
 " NERDTree
