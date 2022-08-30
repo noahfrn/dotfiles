@@ -24,8 +24,8 @@ nnoremap ,r :source ~/.ideavimrc<CR>
 map Q gq
 sethandler <c-o> a:vim
 sethandler <c-i> a:vim
-nmap <c-o> :action Back<CR>
-nmap <c-i> :action Forward<CR>
+nmap <c-o> <Action>(Back)<CR>
+nmap <c-i> <Action>(Forward)<CR>
 
 " Terminal
 nnoremap <leader>tt :action ActivateTerminalToolWindow<CR>
