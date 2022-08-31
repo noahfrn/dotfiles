@@ -78,6 +78,7 @@ nnoremap <leader>rw :action ActivateRunToolWindow<CR>
 nnoremap <leader>ru :action Rerun<CR>
 nnoremap <leader>rc :action ChooseRunConfiguration<CR>
 nnoremap <leader>rt :action RerunFailedTests<CR>
+nnoremap <leader>ra :action RunAnything<CR>
 
 " Debugging
 nnoremap <leader>dd :action Debug<CR>
