@@ -207,7 +207,7 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
 
 else
 
-  colorscheme peachpuff
+  colorscheme ron
 
 endif
 
