@@ -57,7 +57,7 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   nnoremap <leader><leader> :Files<CR>
   nnoremap <leader>g :Git
   nnoremap <leader>gg :Git<CR>
-  nnoremap <leader>s :Ag<CR>
+  nnoremap <leader>/ :Ag<CR>
   nnoremap <leader>b :Buffers<CR>
   nnoremap <leader>d :Dispatch
   nnoremap <leader>f :Format<CR>
