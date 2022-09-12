@@ -56,6 +56,7 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   "Remember that <leader>c prefix is used by nerd-commentary plugin
   nnoremap <leader><leader> :Files<CR>
   nnoremap <leader>g :Git
+  nnoremap <leader>gg :Git<CR>
   nnoremap <leader>s :Ag<CR>
   nnoremap <leader>b :Buffers<CR>
   nnoremap <leader>d :Dispatch
