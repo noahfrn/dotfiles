@@ -24,7 +24,6 @@ set signcolumn=yes
 set mouse=a
 set t_vb=
 set background=dark
-set termguicolors
 
 if filereadable(expand("~/.vim/autoload/plug.vim"))
 
@@ -42,7 +41,10 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   Plug 'jiangmiao/auto-pairs'
   Plug 'tpope/vim-dispatch'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'dracula/vim', { 'as': 'dracula' }
   call plug#end()
+
+  colorscheme dracula
 
   "Plugin keymappings
   "Remember that <leader>c prefix is used by nerd-commentary plugin
