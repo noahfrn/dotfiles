@@ -36,7 +36,6 @@ lua require('plugin.icons')
 lua require('lsp')
 
 "Plugin keymappings
-"Remember that <leader>c prefix is used by nerd-commentary plugin
 nnoremap <leader>g :Git
 nnoremap <leader>gg :Git<CR>
 nnoremap <leader>d :Dispatch
