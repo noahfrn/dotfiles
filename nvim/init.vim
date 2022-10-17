@@ -61,6 +61,7 @@ nnoremap <leader>gs :Telescope git_status<CR>
 nnoremap <leader>gb :Telescope git_branches<CR>
 nnoremap <leader>x :Telescope lsp_document_symbols<CR>
 nnoremap <leader>l :Telescope diagnostics<CR>
+nnoremap <leader>c :Telescope commands<CR>
 
 "Cursor shape in Iterm2/Tmux
 let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
