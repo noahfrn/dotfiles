@@ -26,14 +26,14 @@ set t_vb=
 set completeopt=menu,menuone,noselect
 set termguicolors
 
-colorscheme dracula
-
 lua require('plugins')
 lua require('plugin.scope')
 lua require('plugin.complete')
 lua require('plugin.treesitter')
 lua require('plugin.icons')
 lua require('lsp')
+
+colorscheme dracula
 
 "Plugin keymappings
 nnoremap <leader>g :Git
