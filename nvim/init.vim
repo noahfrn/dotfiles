@@ -27,10 +27,10 @@ set completeopt=menu,menuone,noselect
 set termguicolors
 
 lua require('plugins')
-lua require('plugin.scope')
 lua require('plugin.complete')
 lua require('plugin.treesitter')
 lua require('plugin.icons')
+lua require('plugin.scope')
 lua require('lsp')
 
 colorscheme dracula
@@ -59,6 +59,7 @@ nnoremap <leader>b :Telescope buffers<CR>
 nnoremap <leader>h :Telescope help_tags<CR>
 nnoremap <leader>gs :Telescope git_status<CR>
 nnoremap <leader>gb :Telescope git_branches<CR>
+nnoremap <leader>gc :Telescope git_commits<CR>
 nnoremap <leader>x :Telescope lsp_document_symbols<CR>
 nnoremap <leader>l :Telescope diagnostics<CR>
 nnoremap <leader>c :Telescope commands<CR>
