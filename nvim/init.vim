@@ -27,9 +27,10 @@ set completeopt=menu,menuone,noselect
 set termguicolors
 
 lua require('plugins')
+lua require('Comment').setup()
 lua require('plugin.complete')
 lua require('plugin.treesitter')
-lua require('plugin.icons')
+lua require('nvim-web-devicons').setup { default = true }
 lua require('plugin.scope')
 lua require('lsp')
 
