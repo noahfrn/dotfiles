@@ -28,6 +28,7 @@ set termguicolors
 
 lua require('plugins')
 lua require('Comment').setup()
+lua require('gitsigns').setup()
 lua require('plugin.complete')
 lua require('plugin.treesitter')
 lua require('nvim-web-devicons').setup { default = true }
