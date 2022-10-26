@@ -62,7 +62,12 @@ nnoremap <leader>gs :Telescope git_status<CR>
 nnoremap <leader>gb :Telescope git_branches<CR>
 nnoremap <leader>gc :Telescope git_commits<CR>
 nnoremap <leader>x :Telescope lsp_document_symbols<CR>
-nnoremap <leader>l :Telescope diagnostics<CR>
+nnoremap <leader>z :Telescope lsp_dynamic_workspace_symbols<CR>
+nnoremap <leader>, :Telescope diagnostics<CR>
+nnoremap <leader>lr :Telescope lsp_references<CR>
+nnoremap <leader>li :Telescope lsp_implementations<CR>
+nnoremap <leader>ld :Telescope lsp_definitions<CR>
+nnoremap <leader>lt :Telescope lsp_type_definitions<CR>
 nnoremap <leader>c :Telescope commands<CR>
 
 "Cursor shape in Iterm2/Tmux

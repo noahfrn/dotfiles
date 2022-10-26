@@ -23,6 +23,7 @@ require('packer').startup(function(use)
   use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/cmp-vsnip'
   use 'hrsh7th/vim-vsnip'
+  use 'rafamadriz/friendly-snippets'
   use 'neovim/nvim-lspconfig'
   use "williamboman/mason.nvim"
   use "williamboman/mason-lspconfig.nvim"
@@ -34,4 +35,7 @@ require('packer').startup(function(use)
   use {'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
   use 'numToStr/Comment.nvim'
   use {'dracula/vim', as = 'dracula'}
+  use {"windwp/nvim-autopairs",
+        config = function() require ("nvim-autopairs").setup {} end
+      }
 end)
