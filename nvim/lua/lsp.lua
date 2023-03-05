@@ -38,6 +38,7 @@ local lsp_flags = {
 }
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
+capabilities.offsetEncoding = { "utf-16" }
 
 require("mason-lspconfig").setup_handlers({
   function(server_name)
@@ -47,13 +48,21 @@ require("mason-lspconfig").setup_handlers({
       flags = lsp_flags
     }
   end,
-  ["sumneko_lua"] = function()
-    require("lspconfig")["sumneko_lua"].setup {
-      Lua = {
-        diagnostics = {
-          globals = { "vim" }
+  ["lua_ls"] = function()
+    require("lspconfig").lua_ls.setup({
+      settings = {
+        Lua = {
+          diagnostics = {
+            globals = {"vim"}
+          },
+          workspace = {
+            library = vim.api.nvim_get_runtime_file("", true),
+          }
         }
-      }
-    }
+      },
+      on_attach = on_attach,
+      capabilities = capabilities,
+      flags = lsp_flags
+    })
   end
 })
