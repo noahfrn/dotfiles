@@ -26,6 +26,7 @@ require('packer').startup(function(use)
   use 'numToStr/Comment.nvim'
   use "windwp/nvim-autopairs"
   use 'lewis6991/gitsigns.nvim'
+  use 'tpope/vim-fugitive'
   use 'nvim-tree/nvim-tree.lua'
   use 'vimwiki/vimwiki'
   use 'tools-life/taskwiki'
