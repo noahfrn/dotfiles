@@ -48,8 +48,8 @@ nnoremap <c-k> <c-w>k
 nnoremap <c-l> <c-w>l
 
 " Tabs
-nnoremap <TAB> :action PreviousTab<CR>
-nnoremap <s-TAB> :action NextTab<CR>
+nnoremap <Tab> :action PreviousTab<CR>
+nnoremap <S-Tab> :action NextTab<CR>
 
 " Windows
 sethandler <c-x> a:vim
