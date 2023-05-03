@@ -911,4 +911,4 @@ font:
   #highlight_damage: false
 
 import:
-  - ~/.config/alacritty/dracula-pro.yml
+  - ~/.config/alacritty/dracula.yml
