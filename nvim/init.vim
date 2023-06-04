@@ -20,7 +20,7 @@ set sessionoptions="curdir,folds,help,options,tabpages,winsize"
 set cmdheight=2
 set updatetime=300
 set signcolumn=yes
-
+set mouse=nvc
 
 "set t_vb=
 
