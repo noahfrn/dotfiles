@@ -82,7 +82,7 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 if has('nvim')
-  nnoremap <BS> <C-W>h
+nnoremap <BS> <C-W>h
 endif
 
 " Yanking to the system clipboard
@@ -94,16 +94,16 @@ noremap <silent><leader>k :nohlsearch<cr>
 
 " Terminal mode
 if has("nvim")
-    tnoremap <esc> <C-\><C-n>
-    tnoremap jj <C-\><C-n>
-    tnoremap jJ <C-\><C-n>
-    tnoremap Jj <C-\><C-n>
-    tnoremap JJ <C-\><C-n>
-    tnoremap jk <C-\><C-n>
-    tnoremap jK <C-\><C-n>
-    tnoremap Jk <C-\><C-n>
-    tnoremap JK <C-\><C-n>
-    nnoremap <leader>t :terminal <CR>
+tnoremap <esc> <C-\><C-n>
+tnoremap jj <C-\><C-n>
+tnoremap jJ <C-\><C-n>
+tnoremap Jj <C-\><C-n>
+tnoremap JJ <C-\><C-n>
+tnoremap jk <C-\><C-n>
+tnoremap jK <C-\><C-n>
+tnoremap Jk <C-\><C-n>
+tnoremap JK <C-\><C-n>
+nnoremap <leader>t :terminal <CR>
 endif
 
 " Tabs
@@ -146,36 +146,37 @@ autocmd BufWinEnter * set foldlevel=999999
 "----------------------------------------------------------------------
 if has("nvim")
 
-  lua require('plugins')
+    lua require('plugins')
 
 
-  lua require('Comment').setup()
-  lua require('gitsigns').setup()
-  lua require('plugin.treesitter')
-  lua require('nvim-web-devicons').setup { default = true }
-  lua require('plugin.scope')
-  lua require('nvim-autopairs').setup {}
-  lua require('lsp')
+    lua require('Comment').setup()
+    lua require('gitsigns').setup()
+    lua require('plugin.treesitter')
+    lua require('nvim-web-devicons').setup { default = true }
+    lua require('plugin.scope')
+    lua require('nvim-autopairs').setup {}
+    lua require('lsp')
 
-  packadd! dracula_pro
-  colorscheme dracula_pro
+    packadd! dracula_pro
+    colorscheme dracula_pro
 
-  " Git
-  nnoremap <leader>g :Git
+    " Git
+    nnoremap <leader>g :Git
 
-  " Dispatch
-  nnoremap <leader>d :Dispatch
-  nnoremap <leader>m :Make
-  nnoremap <leader>e :Focus
+    " Dispatch
+    nnoremap <leader>d :Dispatch
+    nnoremap <leader>s :Start
+    nnoremap <leader>m :Make
+    nnoremap <leader>e :Focus
 
-  nnoremap <leader><leader> :Telescope find_files<CR>
-  nnoremap <leader>/ :Telescope live_grep<CR>
-  nnoremap <leader>b :Telescope buffers<CR>
-  nnoremap <leader>h :Telescope help_tags<CR>
-  nnoremap <leader>gb :Telescope git_branches<CR>
-  nnoremap <leader>gc :Telescope git_commits<CR>
-  nnoremap <leader>x :Telescope lsp_document_symbols<CR>
-  nnoremap <leader>z :Telescope lsp_dynamic_workspace_symbols<CR>
-  nnoremap <leader>, :Telescope diagnostics<CR>
-  nnoremap <leader>cc :Telescope commands<CR>
+    nnoremap <leader><leader> :Telescope find_files<CR>
+    nnoremap <leader>/ :Telescope live_grep<CR>
+    nnoremap <leader>b :Telescope buffers<CR>
+    nnoremap <leader>h :Telescope help_tags<CR>
+    nnoremap <leader>gb :Telescope git_branches<CR>
+    nnoremap <leader>gc :Telescope git_commits<CR>
+    nnoremap <leader>x :Telescope lsp_document_symbols<CR>
+    nnoremap <leader>z :Telescope lsp_dynamic_workspace_symbols<CR>
+    nnoremap <leader>, :Telescope diagnostics<CR>
+    nnoremap <leader>cc :Telescope commands<CR>
 endif
