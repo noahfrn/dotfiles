@@ -103,7 +103,7 @@ if has("nvim")
     tnoremap jK <C-\><C-n>
     tnoremap Jk <C-\><C-n>
     tnoremap JK <C-\><C-n>
-    nnoremap <Leader>c :terminal <CR>
+    nnoremap <leader>t :terminal <CR>
 endif
 
 " Tabs
@@ -142,12 +142,6 @@ autocmd BufWritePre * :%s/\s\+$//e
 autocmd BufWinEnter * set foldlevel=999999
 
 "----------------------------------------------------------------------
-" Colorscheme
-"----------------------------------------------------------------------
-
-colorscheme industry
-
-"----------------------------------------------------------------------
 " Plugins
 "----------------------------------------------------------------------
 if has("nvim")
@@ -163,6 +157,7 @@ if has("nvim")
   lua require('nvim-autopairs').setup {}
   lua require('lsp')
 
+  packadd! dracula_pro
   colorscheme dracula_pro
 
   " Git
@@ -182,5 +177,5 @@ if has("nvim")
   nnoremap <leader>x :Telescope lsp_document_symbols<CR>
   nnoremap <leader>z :Telescope lsp_dynamic_workspace_symbols<CR>
   nnoremap <leader>, :Telescope diagnostics<CR>
-  nnoremap <leader>c :Telescope commands<CR>
+  nnoremap <leader>cc :Telescope commands<CR>
 endif
