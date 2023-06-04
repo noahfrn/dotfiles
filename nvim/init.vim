@@ -1,126 +1,186 @@
-packadd! dracula_pro
+"----------------------------------------------------------------------
+" Settings
+"----------------------------------------------------------------------
+
+" General settings
+syntax on           " Enable filetype detection
+set number          " Show line numbers
+set ruler           " Show cursor's line and column number
+set hidden          " Background buffers
+set splitbelow      " Vertical splits appear below by default
+set splitright      " Vertical splits appear to the right by default
+set list            " Show invisible characters
+set listchars=tab:›\ ,eol:¬,trail:⋅ "Set the characters for the invisibles
+set visualbell
+set showmatch       " Show matching brace
+set showmode        " Show current mode
+set colorcolumn=80  " Enable 80 character column limit
+set encoding=utf-8
+set sessionoptions="curdir,folds,help,options,tabpages,winsize"
+set cmdheight=2
+set updatetime=300
+
+
+"set t_vb=
+
+" Search settings
+set hlsearch    " Highlight results
+set incsearch   " Start showing results as you type
+set smartcase   " Smarter case sensitivity
+set ignorecase  " Ignore casing
+
+" Tab settings
+set expandtab     " Expand tabs automagically
+set tabstop=4     " Tab width in spaces
+set shiftwidth=4  " Amount of spaces when shifting
+set softtabstop=4 " Soft tab width in spaces
+
+" Tab completion settings
+set wildmode=list:longest     " Match on longest first
+set wildignore+=.git,.hg,.svn " Ignore version control repos
+set wildignore+=*.6           " Ignore Go compiled files
+set wildignore+=*.pyc         " Ignore Python compiled files
+set wildignore+=*.swp         " Ignore vim backups
+
+" Backup settings
+set nobackup
+set nowritebackup
+
+" Color settings
+set termguicolors
+set background=dark
+
+"----------------------------------------------------------------------
+" Key mappings
+"----------------------------------------------------------------------
 
 "Leader mappings
 let mapleader=" "
 let maplocalleader=","
 
-"Settings
-syntax on
-set tabstop=2
-set shiftwidth=2
-set expandtab
-set ai
-set number
-set hlsearch
-set ruler
-set splitbelow
-set splitright
-set hidden
-set encoding=utf-8
-set nobackup
-set nowritebackup
-set cmdheight=2
-set updatetime=300
-set shortmess+=c
-set signcolumn=yes
-set mouse=a
-set t_vb=
-set completeopt=menu,menuone,noselect
-set termguicolors
-set background=dark
+" Mode switching
+inoremap jj <esc>
+inoremap jJ <esc>
+inoremap Jj <esc>
+inoremap JJ <esc>
+inoremap jk <esc>
+inoremap jK <esc>
+inoremap Jk <esc>
+inoremap JK <esc>
 
-lua require('plugins')
-lua require('Comment').setup()
-lua require('gitsigns').setup()
-lua require('plugin.complete')
-lua require('plugin.treesitter')
-lua require('plugin.null-ls')
-lua require('nvim-web-devicons').setup { default = true }
-lua require('plugin.scope')
-lua require("plugin.dap")
-lua require('nvim-autopairs').setup {}
-lua require('nvim-tree').setup()
-lua require('lsp')
+" Visual up and down instead of whole lines
+map j gj
+map k gk
 
-colorscheme dracula_pro_van_helsing
+" Cd to the directory containing the file in the buffer
+nmap <leader>cd :cd %:h<CR>
+nmap <leader>lcd :lcd %:h<CR>
 
-"Plugin keymappings
-nnoremap <leader>g :Git
-nnoremap <leader>gg :Git<CR>
-"nnoremap <leader>d :Dispatch
-nnoremap <leader>m :Make
-nnoremap <leader>o :Copen<CR>
-nnoremap <leader>e :Focus
+" Better split navigation
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+if has('nvim')
+  nnoremap <BS> <C-W>h
+endif
 
-"General Keymappings
-nnoremap <leader>k :noh<CR>
-nnoremap H gT
-nnoremap L gt
-nnoremap k gk
-nnoremap j gj
+" Yanking to the system clipboard
+map <leader>y "+y
+map <leader>p "+p
+
+" Get rid of search highlights
+noremap <silent><leader>k :nohlsearch<cr>
+
+" Terminal mode
+if has("nvim")
+    tnoremap <esc> <C-\><C-n>
+    tnoremap jj <C-\><C-n>
+    tnoremap jJ <C-\><C-n>
+    tnoremap Jj <C-\><C-n>
+    tnoremap JJ <C-\><C-n>
+    tnoremap jk <C-\><C-n>
+    tnoremap jK <C-\><C-n>
+    tnoremap Jk <C-\><C-n>
+    tnoremap JK <C-\><C-n>
+    nnoremap <Leader>c :terminal <CR>
+endif
+
+" Tabs
+nnoremap <C-t> :tabnew<CR>
+nnoremap <C-c> :tabclose<CR>
+nnoremap <C-[> :tabprevious<CR>
+nnoremap <C-]> :tabnext<CR>
+
+" Writing as root
+cmap w!! %!sudo tee > /dev/null %
+
+" Easier indenting
 vnoremap > >gv
 vnoremap < <gv
-tnoremap <S-Tab> <C-W>:tabprevious<CR>
 
-nnoremap <C-t> :NvimTreeFocus<CR>
-nnoremap <C-x> :NvimTreeClose<CR>
-nnoremap <C-q> :cclose<CR>
+" Tab navigation
+map <D-S-{> :tabprevious
+map <D-S-}> :tabprevious
 
-nnoremap <leader><leader> :Telescope find_files<CR>
-nnoremap <leader>/ :Telescope live_grep<CR>
-nnoremap <leader>b :Telescope buffers<CR>
-nnoremap <leader>h :Telescope help_tags<CR>
-nnoremap <leader>gs :Telescope git_status<CR>
-nnoremap <leader>gb :Telescope git_branches<CR>
-nnoremap <leader>gc :Telescope git_commits<CR>
-nnoremap <leader>x :Telescope lsp_document_symbols<CR>
-nnoremap <leader>z :Telescope lsp_dynamic_workspace_symbols<CR>
-nnoremap <leader>, :Telescope diagnostics<CR>
-nnoremap <leader>lr :Telescope lsp_references<CR>
-nnoremap <leader>li :Telescope lsp_implementations<CR>
-nnoremap <leader>ld :Telescope lsp_definitions<CR>
-nnoremap <leader>lt :Telescope lsp_type_definitions<CR>
-nnoremap <leader>c :Telescope commands<CR>
-
-nnoremap <leader>dR <cmd>lua require'dap'.run_to_cursor()<cr>
-nnoremap <leader>dE <cmd>lua require'dapui'.eval(vim.fn.input '[Expression] > ')<cr>
-nnoremap <leader>dC <cmd>lua require'dap'.set_breakpoint(vim.fn.input '[Condition] > ')<cr>
-nnoremap <leader>dU <cmd>lua require'dapui'.toggle()<cr>
-nnoremap <leader>db <cmd>lua require'dap'.step_back()<cr>
-nnoremap <leader>dc <cmd>lua require'dap'.continue()<cr>
-nnoremap <leader>dd <cmd>lua require'dap'.disconnect()<cr>
-nnoremap <leader>de <cmd>lua require'dapui'.eval()<cr>
-nnoremap <leader>dg <cmd>lua require'dap'.session()<cr>
-nnoremap <leader>dh <cmd>lua require'dap.ui.widgets'.hover()<cr>
-nnoremap <leader>dS <cmd>lua require'dap.ui.widgets'.scopes()<cr>
-nnoremap <leader>di <cmd>lua require'dap'.step_into()<cr>
-nnoremap <leader>do <cmd>lua require'dap'.step_over()<cr>
-nnoremap <leader>dp <cmd>lua require'dap'.pause.toggle()<cr>
-nnoremap <leader>dq <cmd>lua require'dap'.close()<cr>
-nnoremap <leader>dr <cmd>lua require'dap'.repl.toggle()<cr>
-nnoremap <leader>ds <cmd>lua require'dap'.continue()<cr>
-nnoremap <leader>dt <cmd>lua require'dap'.toggle_breakpoint()<cr>
-nnoremap <leader>dx <cmd>lua require'dap'.terminate()<cr>
-nnoremap <leader>du <cmd>lua require'dap'.step_out()<cr>
-
+" Quick resizing
 nnoremap <S-Up> <cmd>resize -2<CR>
 nnoremap <S-Down> <cmd>resize +2<CR>
 nnoremap <S-Left> <cmd>vertical resize -2<CR>
 nnoremap <S-right> <cmd>vertical resize +2<CR>
 
-lua << EOF
-local hop = require('hop')
-hop.setup {
-  case_insensitive = true,
-  quit_key = "<Esc>",
-  char2_fallback_key = "<CR>"
-}
-local directions = require('hop.hint').HintDirection
-vim.keymap.set({'n', 'v', 'o'}, 'f', "", {
-  silent = true, noremap = true, 
-  callback = function()
-    hop.hint_char2()
-  end,
-  desc = "nvim-hop char2"
-}) 
-EOF
+nnoremap <leader>o :Copen<CR>
+nnoremap <C-q> :cclose<CR>
+
+"----------------------------------------------------------------------
+" Autocommands
+"----------------------------------------------------------------------
+" Clear whitespace at the end of lines automatically
+autocmd BufWritePre * :%s/\s\+$//e
+
+" Don't fold anything.
+autocmd BufWinEnter * set foldlevel=999999
+
+"----------------------------------------------------------------------
+" Colorscheme
+"----------------------------------------------------------------------
+
+colorscheme industry
+
+"----------------------------------------------------------------------
+" Plugins
+"----------------------------------------------------------------------
+if has("nvim")
+
+  lua require('plugins')
+
+
+  lua require('Comment').setup()
+  lua require('gitsigns').setup()
+  lua require('plugin.treesitter')
+  lua require('nvim-web-devicons').setup { default = true }
+  lua require('plugin.scope')
+  lua require('nvim-autopairs').setup {}
+  lua require('lsp')
+
+  colorscheme dracula_pro
+
+  " Git
+  nnoremap <leader>g :Git
+
+  " Dispatch
+  nnoremap <leader>d :Dispatch
+  nnoremap <leader>m :Make
+  nnoremap <leader>e :Focus
+
+  nnoremap <leader><leader> :Telescope find_files<CR>
+  nnoremap <leader>/ :Telescope live_grep<CR>
+  nnoremap <leader>b :Telescope buffers<CR>
+  nnoremap <leader>h :Telescope help_tags<CR>
+  nnoremap <leader>gb :Telescope git_branches<CR>
+  nnoremap <leader>gc :Telescope git_commits<CR>
+  nnoremap <leader>x :Telescope lsp_document_symbols<CR>
+  nnoremap <leader>z :Telescope lsp_dynamic_workspace_symbols<CR>
+  nnoremap <leader>, :Telescope diagnostics<CR>
+  nnoremap <leader>c :Telescope commands<CR>
+endif
