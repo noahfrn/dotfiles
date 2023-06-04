@@ -32,12 +32,15 @@ local lsp_flags = {
   debounce_text_changes = 150
 }
 
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+capabilities.offsetEncoding = { "utf-16" }
 
 require("mason-lspconfig").setup_handlers({
   function(server_name)
     require("lspconfig")[server_name].setup {
       on_attach = on_attach,
-      flags = lsp_flags
+      flags = lsp_flags,
+      capabilities = capabilities
     }
   end,
   ["lua_ls"] = function()
@@ -53,7 +56,8 @@ require("mason-lspconfig").setup_handlers({
         }
       },
       on_attach = on_attach,
-      flags = lsp_flags
+      flags = lsp_flags,
+      capabilities = capabilities
     })
   end
 })

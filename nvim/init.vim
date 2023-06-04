@@ -19,6 +19,7 @@ set encoding=utf-8
 set sessionoptions="curdir,folds,help,options,tabpages,winsize"
 set cmdheight=2
 set updatetime=300
+set signcolumn=yes
 
 
 "set t_vb=
@@ -151,6 +152,7 @@ if has("nvim")
 
     lua require('Comment').setup()
     lua require('gitsigns').setup()
+    lua require('plugin.complete')
     lua require('plugin.treesitter')
     lua require('nvim-web-devicons').setup { default = true }
     lua require('plugin.scope')
