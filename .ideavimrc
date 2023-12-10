@@ -64,13 +64,13 @@ nnoremap <leader>q :action Refactorings.QuickListPopupAction<CR>
 nnoremap <leader>m :action Generate<CR>
 
 " Gotos
-nnoremap <leader><leader> :action GotoFile<CR>
-nnoremap <leader>a :action GotoAction<CR>
-nnoremap <leader>/ :action FindInPath<CR>
-nnoremap <leader>u :action FindUsages<CR>
-nnoremap <leader>c :action GotoClass<CR>
-nnoremap <leader>s :action GotoSymbol<CR>
-nnoremap <leader>l :action RecentFiles<CR>
+nnoremap <leader>sf :action GotoFile<CR>
+nnoremap <leader>sa :action GotoAction<CR>
+nnoremap <leader>sg :action FindInPath<CR>
+nnoremap <leader>su :action FindUsages<CR>
+nnoremap <leader>sc :action GotoClass<CR>
+nnoremap <leader>ws :action GotoSymbol<CR>
+nnoremap <leader><leader> :action RecentFiles<CR>
 
 " Running
 nnoremap <leader>rr :action Run<CR>
@@ -79,6 +79,7 @@ nnoremap <leader>ru :action Rerun<CR>
 nnoremap <leader>rc :action ChooseRunConfiguration<CR>
 nnoremap <leader>rt :action RerunFailedTests<CR>
 nnoremap <leader>ra :action RunAnything<CR>
+nnoremap <leader>rd :action Stop<CR>
 
 " Debugging
 nnoremap <leader>dd :action Debug<CR>
@@ -121,6 +122,9 @@ nnoremap <leader>gp :action Vcs.Push<CR>
 nnoremap <leader>gl :action Git.Pull<CR>
 nnoremap <leader>gr :action Github.View.Pull.Request<CR>
 nnoremap <leader>ga :action Annotate<CR>
+
+" Copilot
+nnoremap <leader>aw :action copilot.chat.show<CR>
 
 " NERDTree
 sethandler <c-t> a:vim
