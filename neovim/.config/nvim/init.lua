@@ -215,6 +215,7 @@ require('lazy').setup({
 
   require("custom.plugins.choosewin"),
   require("custom.plugins.copilot"),
+  require("custom.plugins.toggleterm"),
 }, {})
 
 -- [[ Setting options ]]
@@ -640,4 +641,4 @@ none_ls.setup({
 })
 
 
-vim.keymap.set('n', '<leader>f', "<cmd>Format<CR>", { desc = '[F]ormat' })
+vim.keymap.set('n', '<leader>f', "<cmd>Format<CR>", { desc = '[f]ormat buffer' })
