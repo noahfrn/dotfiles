@@ -43,7 +43,7 @@ require('lazy').setup({
 
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim', opts = {} },
+      { 'j-hui/fidget.nvim',       opts = {} },
 
       -- Additional lua configuration, makes nvim stuff amazing!
       'folke/neodev.nvim',
@@ -68,7 +68,7 @@ require('lazy').setup({
   },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim', opts = {} },
+  { 'folke/which-key.nvim',  opts = {} },
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -148,7 +148,7 @@ require('lazy').setup({
     'dracula/vim',
     priority = 1000,
     lazy = false,
-    config = function ()
+    config = function()
       vim.cmd.colorscheme "dracula"
     end
   },
@@ -212,8 +212,9 @@ require('lazy').setup({
   "nvimtools/none-ls.nvim",
 
   require("kickstart.plugins.debug"),
-  require("kickstart.plugins.choosewin")
 
+  require("custom.plugins.choosewin"),
+  require("custom.plugins.copilot"),
 }, {})
 
 -- [[ Setting options ]]
@@ -522,7 +523,7 @@ local servers = {
   pyright = {},
   rust_analyzer = {},
   tsserver = {},
-  html = { filetypes = { 'html', 'twig', 'hbs'} },
+  html = { filetypes = { 'html', 'twig', 'hbs' } },
 
   lua_ls = {
     Lua = {
@@ -559,6 +560,12 @@ mason_lspconfig.setup_handlers {
   end,
 }
 
+local has_words_before = function()
+  if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then return false end
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_text(0, line - 1, 0, line - 1, col, {})[1]:match("^%s*$") == nil
+end
+
 -- [[ Configure nvim-cmp ]]
 -- See `:help cmp`
 local cmp = require 'cmp'
@@ -586,8 +593,8 @@ cmp.setup {
       select = true,
     },
     ['<Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
+      if cmp.visible() and has_words_before() then
+        cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
       elseif luasnip.expand_or_locally_jumpable() then
         luasnip.expand_or_jump()
       else
@@ -605,6 +612,7 @@ cmp.setup {
     end, { 'i', 's' }),
   },
   sources = {
+    { name = "copilot" },
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
     { name = 'path' },
