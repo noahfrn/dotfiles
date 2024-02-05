@@ -212,7 +212,7 @@ require('lazy').setup({
   "nvimtools/none-ls.nvim",
 
   require("kickstart.plugins.debug"),
-
+  require("kickstart.plugins.autoformat"),
   require("custom.plugins.choosewin"),
   require("custom.plugins.copilot"),
   require("custom.plugins.toggleterm"),
