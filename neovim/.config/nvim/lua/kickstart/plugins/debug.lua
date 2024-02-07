@@ -27,7 +27,7 @@ return {
     }
 
     vim.keymap.set('n', '<F5>', dap.continue, { desc = 'Debug: Start/Continue' })
-    vim.keymap.set('n', '<F6>', dap.stop, { desc = 'Debug: Stop' })
+    vim.keymap.set('n', '<F6>', dap.close, { desc = 'Debug: Stop' })
     vim.keymap.set('n', '<F8>', dap.run_to_cursor, { desc = 'Debug: Run to Cursor' })
     vim.keymap.set('n', '<F1>', dap.step_into, { desc = 'Debug: Step Into' })
     vim.keymap.set('n', '<F2>', dap.step_over, { desc = 'Debug: Step Over' })
