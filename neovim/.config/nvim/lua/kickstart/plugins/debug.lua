@@ -64,7 +64,7 @@ return {
     dap.listeners.before.event_exited['dapui_config'] = dapui.close
 
     require('dap-go').setup()
-    require('dap-python').setup()
+    require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')
     require('dap.ext.vscode').load_launchjs(".vscode/launch.json", {})
   end,
 }

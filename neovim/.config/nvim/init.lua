@@ -629,10 +629,6 @@ cmp.setup {
 local none_ls = require("null-ls")
 none_ls.setup({
   sources = {
-    -- Python
-    none_ls.builtins.formatting.black,
-    none_ls.builtins.diagnostics.ruff,
-
     -- C/C++
     none_ls.builtins.formatting.clang_format,
 
