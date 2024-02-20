@@ -641,6 +641,10 @@ none_ls.setup({
 
 vim.keymap.set('n', '<leader>f', "<cmd>Format<CR>", { desc = '[f]ormat buffer' })
 
+-- indenting
+vim.keymap.set('v', '>', '>gv', {})
+vim.keymap.set('v', '<', '<gv', {})
+
 -- better up/down
 vim.keymap.set({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 vim.keymap.set({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
