@@ -216,6 +216,7 @@ require('lazy').setup({
   require("custom.plugins.choosewin"),
   require("custom.plugins.copilot"),
   require("custom.plugins.toggleterm"),
+  require("custom.plugins.obsession"),
 }, {})
 
 -- [[ Setting options ]]
