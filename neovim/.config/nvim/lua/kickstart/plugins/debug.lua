@@ -63,6 +63,26 @@ return {
     dap.listeners.before.event_terminated['dapui_config'] = dapui.close
     dap.listeners.before.event_exited['dapui_config'] = dapui.close
 
+    dap.adapters.lldb = {
+      type = 'executable',
+      command = '/opt/homebrew/bin/lldb-vscode',
+      name = 'lldb'
+    }
+    dap.configurations.cpp = {
+      {
+        name = "Launch",
+        type = "lldb",
+        request = "launch",
+        program = function()
+          return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. '/', 'file')
+        end,
+        cwd = '${workspaceFolder}',
+        stopOnEntry = false,
+        args = {}
+      }
+    }
+
+
     require('dap-go').setup()
     require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')
     require('dap.ext.vscode').load_launchjs(".vscode/launch.json", {})
