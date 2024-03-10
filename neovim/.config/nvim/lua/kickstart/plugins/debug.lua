@@ -85,6 +85,8 @@ return {
 
     require('dap-go').setup()
     require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')
-    require('dap.ext.vscode').load_launchjs(".vscode/launch.json", {})
+    require('dap.ext.vscode').load_launchjs(".vscode/launch.json", {
+      lldb = { 'cpp' }
+    })
   end,
 }
