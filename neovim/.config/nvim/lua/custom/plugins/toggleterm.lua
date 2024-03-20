@@ -46,9 +46,20 @@ return {
       lazygit:toggle()
     end
 
+    local lazydocker = Terminal:new({
+      cmd = "lazydocker",
+      hidden = true,
+      direction = "tab",
+    })
+    function _lazydocker_toggle()
+      lazydocker:toggle()
+    end
+
     vim.api.nvim_set_keymap("n", "<leader>gg", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
+    vim.api.nvim_set_keymap("n", "<leader>o", "<cmd>lua _lazydocker_toggle()<CR>", { noremap = true, silent = true })
     require("which-key").register({
-      ["<leader>gg"] = { "Lazygit" }
+      ["<leader>gg"] = { "Lazygit" },
+      ["<leader>o"] = { "Lazydocker" }
     })
   end
 }
