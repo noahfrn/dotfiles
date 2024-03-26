@@ -28,7 +28,7 @@ nmap <c-o> <Action>(Back)<CR>
 nmap <c-i> <Action>(Forward)<CR>
 
 " Terminal
-nnoremap <leader>tt :action ActivateTerminalToolWindow<CR>
+nnoremap <c-\> :action ActivateTerminalToolWindow<CR>
 nnoremap <leader>th :action Terminal.OpenInTerminal<CR>
 
 " Panes
@@ -124,7 +124,7 @@ nnoremap <leader>gr :action Github.View.Pull.Request<CR>
 nnoremap <leader>ga :action Annotate<CR>
 
 " Copilot
-nnoremap <leader>aw :action copilot.chat.show<CR>
+nnoremap <leader>aw :action ActivateAIAssistantToolWindow<CR>
 
 " NERDTree
 sethandler <c-t> a:vim
