@@ -28,11 +28,13 @@ nmap <c-o> <Action>(Back)<CR>
 nmap <c-i> <Action>(Forward)<CR>
 
 " Terminal
+sethandler <c-\> a:vim
 nnoremap <c-\> :action ActivateTerminalToolWindow<CR>
+nnoremap <leader>tt :action ActivateTerminalToolWindow<CR>
 nnoremap <leader>th :action Terminal.OpenInTerminal<CR>
 
 " Panes
-sethandler <c-w> a:vim
+sethandler <c-w> ,:vim
 sethandler <c-m> a:vim
 sethandler <c-=> a:vim
 nnoremap <c-w>= :action Unsplit<CR>
