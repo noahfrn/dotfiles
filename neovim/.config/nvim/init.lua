@@ -642,7 +642,10 @@ none_ls.setup({
     none_ls.builtins.formatting.clang_format,
 
     -- Typescript
-    none_ls.builtins.formatting.prettier
+    none_ls.builtins.formatting.prettier,
+
+    -- Python
+    none_ls.builtins.formatting.black
 
   }
 })
